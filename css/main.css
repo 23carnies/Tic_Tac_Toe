@@ -2,6 +2,8 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color:rgba(182, 182, 180, 0.796)
+    
 }
 
 section.board {
@@ -9,11 +11,27 @@ section.board {
     grid-template-rows: repeat(3, 10vmin);
     grid-template-columns: repeat(3, 10vmin);
     grid-gap: 0vmin;
+    
+}
+article {
+    margin: 0 auto;
 }
 
-div {
+.innerBoard {
     border: 3px solid black;
     font-size: 8vmin;
     text-align: center;
     vertical-align: middle;
+}
+
+#reset {
+    margin-top: 25px;
+}
+
+.playerX {
+    background-color: forestgreen;
+}
+
+.playerO {
+    background-color: goldenrod;
 }

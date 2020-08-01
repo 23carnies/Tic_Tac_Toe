@@ -15,9 +15,9 @@ const winCombos = [[0,4,8], [6,4,2], [0,3,6], [1,4,7], [2,5,8], [0,1,2], [3,4,5]
 
 // Variables might include (board/turn/winner)
 //turn is to remember whose turn it is
-//winner player that won, tie, or game in play
-let board, turn, winner;
 
+let board, turn, winner;
+//winner = [//player that won, a tie, game in play]
 
 
 
@@ -35,34 +35,50 @@ const sq6El = document.getElementById('sq6');
 const sq7El = document.getElementById('sq7');
 const sq8El = document.getElementById('sq8');
 const resetEl = document.getElementById('reset');
-
+const bodyEl = document.getElementsByTagName('body');
+const boardEl = document.getElementsByClassName('board');
 
 /*------Event Listeners------*/
+//onload run init?
+// bodyEl.onload = function() {
+//     init();
+// }
 resetEl.addEventListener('click', function() {
     init();
-})
+});
+board.addEventListener('click', function() {
+    onClick();
+});
 
 
 /*------Functions------*/
 init();
-// Initialization function:
-// Where you set your initial state, setting up 
-// what the board will look like upon loading
 
+//Initialize function
 function init() {
     //clear board ?? not sure if board should be null or all 9 squares each null themselves
     board = null; 
-    // initialize starting player
+    // initialize starting player random function to set turn variable?
+    turn = colors.playerO;
     winner = null;
     messageEl.innerText = 'Ready to play?';
+    console.log(turn);
 }
 board = [sq0El, sq1El, sq2El, sq3El, sq4El, sq5El, sq6El, sq7El, sq8El];
 
 // On-Click function:
-// Set up what happens when one of the elements
-// is clicked
 function onClick() {
+    //search thru array to see what square to fill?
+    //need if square is already filled thing
 
+    //fill sq with color: add css
+    if (turn === playerO) {
+        sq8El.className = 'playerO';
+        //change turn
+    } else {
+        boardEl.className = 'playerX';
+        //change turn
+    }
 }
 
 
