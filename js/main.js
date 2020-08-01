@@ -1,5 +1,6 @@
   
 /*------Constants------*/
+//empty square white, playerX forest green, playerO goldenrod
 const colors = {
     emptySq: null,
     playerX: 1,
@@ -7,16 +8,15 @@ const colors = {
 }
 
 const winCombos = [[0,4,8], [6,4,2], [0,3,6], [1,4,7], [2,5,8], [0,1,2], [3,4,5], [6,7,8]];
+//const winCombos = [[sq0E,sq4El,sq8El], [sq6El,sq4El,sq2El], [sq0E,sq3El,sq6El], [sq1El,sq4El,sq7El], [sq2El,sq5El,sq8El], [sq0E,sq1El,sq2El], [sq3El,sq4El,sq5El], [sq6El,sq7El,sq8El]];
 
-console.log(colors)
-console.log(winCombos)
+
 /*------Variables (state)------*/
 
 // Variables might include (board/turn/winner)
 //turn is to remember whose turn it is
 //winner player that won, tie, or game in play
 let board, turn, winner;
-board = [sq0El, sq1El, sq2El, sq3El, sq4El, sq5El, sq6El, sq7El, sq8El];
 
 
 
@@ -36,13 +36,15 @@ const sq7El = document.getElementById('sq7');
 const sq8El = document.getElementById('sq8');
 const resetEl = document.getElementById('reset');
 
-console.log(board);
+
 /*------Event Listeners------*/
-//resetEl.addEventListener('click', function(init))
-// This is where you should put the event listener
-// for a mouse-click
+resetEl.addEventListener('click', function() {
+    init();
+})
+
 
 /*------Functions------*/
+init();
 // Initialization function:
 // Where you set your initial state, setting up 
 // what the board will look like upon loading
@@ -52,7 +54,9 @@ function init() {
     board = null; 
     // initialize starting player
     winner = null;
+    messageEl.innerText = 'Ready to play?';
 }
+board = [sq0El, sq1El, sq2El, sq3El, sq4El, sq5El, sq6El, sq7El, sq8El];
 
 // On-Click function:
 // Set up what happens when one of the elements
@@ -79,11 +83,7 @@ function render() {}
 
 
 
-// 1) Define required constants:    *****??????
 
-
-// 	1.1) Define a colors object with keys of 'null' (when the square is empty), and players 1 & -1. The value assigned to each key represents the color to display for an empty square (null), player 1 and player -1.
-// 	1.2) Define the 8 possible winning combinations, each containing three indexes of the board that make a winner if they hold the same player value.
 
 // 2) Define required variables used to track the state of the game:
 // 	2.1) Use a board array to represent the squares.✅	2.2) Use a turn variable to remember whose turn it is. ✅
