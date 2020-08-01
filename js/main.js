@@ -1,18 +1,22 @@
   
 /*------Constants------*/
-const colors {
-    playerX = 1;
-    playerO = -1;
+const colors = {
+    emptySq: null,
+    playerX: 1,
+    playerO: -1
 }
 
+const winCombos = [[0,4,8], [6,4,2], [0,3,6], [1,4,7], [2,5,8], [0,1,2], [3,4,5], [6,7,8]];
 
+console.log(colors)
+console.log(winCombos)
 /*------Variables (state)------*/
 
 // Variables might include (board/turn/winner)
 //turn is to remember whose turn it is
 //winner player that won, tie, or game in play
 let board, turn, winner;
-board = [sq0El, sq1El, sq2El, sq3El, sq4El, sq5El, sq6El, sq7El, sq8El]
+board = [sq0El, sq1El, sq2El, sq3El, sq4El, sq5El, sq6El, sq7El, sq8El];
 
 
 
@@ -34,7 +38,7 @@ const resetEl = document.getElementById('reset');
 
 console.log(board);
 /*------Event Listeners------*/
-
+//resetEl.addEventListener('click', function(init))
 // This is where you should put the event listener
 // for a mouse-click
 
@@ -44,8 +48,10 @@ console.log(board);
 // what the board will look like upon loading
 
 function init() {
-    //clear board
-    board = null;  //??
+    //clear board ?? not sure if board should be null or all 9 squares each null themselves
+    board = null; 
+    // initialize starting player
+    winner = null;
 }
 
 // On-Click function:
@@ -99,3 +105,24 @@ function render() {}
 // 				4.3.1.1.3) Set the background color of the current element by using the value as a key on the colors lookup object (constant).
 // 		4.2.2) Render a message:
 // 			4.2.2.1) If winner has a value other than null (game still in progress), render whose turn it is - use the color name for the player, converting it to upper case.
+// 			4.2.2.2) If winner is equal to 'T' (tie), render a tie message.
+// 			4.2.2.3) Otherwise, render a congratulatory message to which player has won - use the color name for the player, converting it to uppercase.
+// 	4.3) Wait for the user to click a square
+
+// 5) Handle a player clicking a square:
+// 	5.1) Obtain the index of the square that was clicked by either:
+// 		5.1.1) "Extracting" the index from an id assigned to the element in the HTML, or
+// 		5.1.2) Looping through the cached square elements using a for loop and breaking out when the current square element equals the event object's target.
+// 	5.2) If the board has a value at the index, immediately return because that square is already taken.
+// 	5.3) If winner is not null, immediately return because the game is over.
+// 	5.4) Update the board array at the index with the value of turn.
+// 	5.5) Flip turns by multiplying turn by -1 (flips a 1 to -1, and vice-versa).
+// 	5.6) Set the winner variable if there's a winner:
+// 		5.6.1) Loop through the each of the winning combination arrays defined.
+// 		5.6.2) Total up the three board positions using the three indexes in the current combo.
+// 		5.6.3) Convert the total to an absolute value (convert any negative total to positive).
+// 		5.6.4) If the total equals 3, we have a winner! Set winner to the board's value at the index specified by the first index in the combo array. Exit the loop.
+// 	5.7) If there's no winner, check if there's a tie:
+// 		5.7.1) Set winner to 'T' if there are no more nulls in the board array.
+// 	5.8) All state has been updated, so render the state to the page (step 4.2).
+		
