@@ -1,3 +1,14 @@
+/*------Constants------*/
+const colors = {
+    emptySpace: null,
+    gold_X: 1,
+    green_O: -1
+}
+//const winCombos = [[sq0El,sq4El,sq8El], [sq6El,sq4El,sq2El], [sq0E,sq3El,sq6El], [sq1El,sq4El,sq7El], [sq2El,sq5El,sq8El], [sq0E,sq1El,sq2El], [sq3El,sq4El,sq5El], [sq6El,sq7El,sq8El]];
+const winCombos = [[0,4,8], [6,4,2], [0,3,6], [1,4,7], [2,5,8], [0,1,2], [3,4,5], [6,7,8]];
+
+
+
 /*------Variables (state)------*/
 
 // Variables might include (board/turn/winner)
