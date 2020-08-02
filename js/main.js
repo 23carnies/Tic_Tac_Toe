@@ -10,13 +10,14 @@ const winCombos = [[0,4,8], [6,4,2], [0,3,6], [1,4,7], [2,5,8], [0,1,2], [3,4,5]
 
 
 /*------Variables (state)------*/
+//let board = [0,1,2,3,4,5,6,7,8];
 let board = [null, null, null, null, null, null, null, null, null];
 let turn = 1;   //playerX or playerO
 let winner = null; //player that won(1 or -1), a tie(T), or game in play(null)
 // Variables might include (board/turn/winner)
 //turn is to remember whose turn it is
 
-let board, turn, winner, player;
+// let board, turn, winner, player;
 //winner = [//player that won, a tie, game in play]
 
 /*------Cached Element References------*/
@@ -31,15 +32,18 @@ const sq6El = document.getElementById('sq6');
 const sq7El = document.getElementById('sq7');
 const sq8El = document.getElementById('sq8');
 const resetEl = document.getElementById('reset');
-let boardEl = document.getElementsByClassName('board');
-//let boardEl = [sq0El, sq1El, sq2El, sq3El, sq4El, sq5El, sq6El, sq7El, sq8El];
+//let boardEl = document.getElementsByClassName('board');
+let boardEl = [sq0El, sq1El, sq2El, sq3El, sq4El, sq5El, sq6El, sq7El, sq8El];
 
 // You might choose to put your game status here
     //  %%% cache message, board?, each piece of board?, resetbtn, title
 /*------Event Listeners------*/
     //  %%%    reset, click squares, startbtn?
-// This is where you should put the event listener
-// for a mouse-click
+resetEl.addEventListener('click', function(){
+    init();
+});
+
+
 
 /*------Functions------*/
 init();
@@ -72,25 +76,27 @@ function init(){
 // either X or O depending on whose turn it is
 
 /*  RENDER THE BOARD  */
+
 function renderBoard() {
-    for(let i=0;i<board.length;i++){
-        boardEl = board.map(function(index, board){
+    for(let i=0;i<boardEl.length;i++){
+        board = boardEl.map(function(board, index) {
+            console.log(`I finally work ${boardEl[i]}`);
             return board;
-        });
-        boardEl = colors.emptySpace;
-        console.log(`What the what?? ${boardEl}`); //i think i finally did it!
+            })   //boardEl = colors.emptySpace;
+        }
+    }
+
+
+/*      HANDLE BOARD CLICKS     */
+function clickHandler(){
+    for(let i=0;i<boardEl.length;i++){
+        boardEl[i].addEventListener('click', function(){
+            console.log(`you clicked square ${index}`);
+            return index;
+        })
     }
 }
-
-// function renderBoard() {
-//     board.forEach(boardEl => {
-//         boardEl = board.map(function(index, board){
-//             console.log(`What the what?? ${boardEl}`);
-//             return board;
-//     });
-// });
-// }
-
+clickHandler();
 
 
 /*      CHANGE TURN         */
@@ -123,7 +129,7 @@ function renderMessage(){
     else {
         //message which player has won
         messageEl.innerText = `Congratulations, ${player}! You win!`;
-        //add confetti
+        //add confetti  https://www.kirilv.com/canvas-confetti/
         //add animate text
         //add to totals
         //onclick any square, run init
@@ -132,8 +138,22 @@ function renderMessage(){
     return player;
     };
 
+/*       IS THERE A WINNER?     */
+function isThereAWinner(){
+    //loop through the wincombos array
+    //for(let i=0;i<winCombos.length;i++)
+    //total 3 board positions (what about when there's more? includes maybe??)
 
+    //convert total to abs value Math.abs()
+}
 
+// 	5.6) Set the winner variable if there's a winner:
+// 		5.6.1) Loop through the each of the winning combination arrays defined.
+// 		5.6.2) Total up the three board positions using the three indexes in the current combo.
+// 		5.6.3) Convert the total to an absolute value (convert any negative total to positive).
+// 		5.6.4) If the total equals 3, we have a winner! Set winner to the board's value at the index specified by the first index in the combo array. Exit the loop.
+// 	5.7) If there's no winner, check if there's a tie:
+// 		5.7.1) Set winner to 'T' if there are no more nulls in the board array.
 
 
 
