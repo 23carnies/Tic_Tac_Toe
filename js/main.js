@@ -1,8 +1,8 @@
 /*------Constants------*/
 const colors = {
     emptySpace: null,
-    x: 1,
-    o: -1
+    X: 1,
+    O: -1
 }
 //const winCombos = [[sq0El,sq4El,sq8El], [sq6El,sq4El,sq2El], [sq0E,sq3El,sq6El], [sq1El,sq4El,sq7El], [sq2El,sq5El,sq8El], [sq0E,sq1El,sq2El], [sq3El,sq4El,sq5El], [sq6El,sq7El,sq8El]];
 const winCombos = [[0,4,8], [6,4,2], [0,3,6], [1,4,7], [2,5,8], [0,1,2], [3,4,5], [6,7,8]];
@@ -77,48 +77,50 @@ function renderBoard() {
 }
 
 
-/*     RENDER A MESSAGE     */
-
-// if (winner === null) {  //game in progress
-//     turn = 1;
-//     messageEl.innerText = 'It\'s your turn. Mark your square.'; 
-    
-// }
 
 /*      CHANGE TURN         */
 function changeTurn(){
-    Math.abs(turn);
-    return turn;
-    console.log(turn);
+   
 }
 
-/*   RENDER WHOSE TURN      */
+
+/*   RENDER WHOSE TURN   **no toUpperCase   */
 function renderTurn(){
     if(turn = 1){
-        player = colors.x;
+        player = colors.X;
     } else {
-        player = colors.o;
+        player = colors.O;
     }
+    console.log(player);
+    return player;
 }
 
+/*     RENDER A MESSAGE     */
 
 
+function renderMessage(){
+    if (winner !== null) { 
+        renderTurn();
+    }    
+    else if (winner === T) {        //tie
+    messageEl.innerText = 'It\'s a tie!';
+    //add to totals
+    //onclick on any square, run init()
+        }
+    else {
+        //message which player has won
+        messageEl.innerText = `Congratulations, ${player}! You win!`;
+        //add confetti
+        //add animate text
+        //add to totals
+        //onclick any square, run init
+    }
+    console.log('I\'m working')
+    return player;
+    }
+    renderMessage();
 
-// if (winner !== null) { 
-    
-//         messageEl.innerText = 'It\'s your turn. Mark your square.';     //} 
-// else if (winner === T) {        //tie
-// messageEl.innerText = 'It\'s a tie!';
-// //add to totals
-// //onclick on any square, run init()
-//     }
-// else {
-//     //message which player has won
-//     //add to totals
-//     //onclick any square, run init
-// }
-// return
-// }
+
 
 
 //4.2.2) Render a message:
