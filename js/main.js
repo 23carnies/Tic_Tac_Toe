@@ -1,8 +1,8 @@
 /*------Constants------*/
 const colors = {
     emptySpace: null,
-    gold_X: 1,
-    green_O: -1
+    x: 1,
+    o: -1
 }
 //const winCombos = [[sq0El,sq4El,sq8El], [sq6El,sq4El,sq2El], [sq0E,sq3El,sq6El], [sq1El,sq4El,sq7El], [sq2El,sq5El,sq8El], [sq0E,sq1El,sq2El], [sq3El,sq4El,sq5El], [sq6El,sq7El,sq8El]];
 const winCombos = [[0,4,8], [6,4,2], [0,3,6], [1,4,7], [2,5,8], [0,1,2], [3,4,5], [6,7,8]];
@@ -14,7 +14,7 @@ const winCombos = [[0,4,8], [6,4,2], [0,3,6], [1,4,7], [2,5,8], [0,1,2], [3,4,5]
 // Variables might include (board/turn/winner)
 //turn is to remember whose turn it is
 
-let board, turn, winner;
+let board, turn, winner, player;
 //winner = [//player that won, a tie, game in play]
 
 /*------Cached Element References------*/
@@ -75,17 +75,39 @@ function renderBoard() {
         console.log(boardEl); //i think i finally did it!
     }
 }
-renderBoard();
 
 
 /*     RENDER A MESSAGE     */
 
-// if (winner === null) { //game in progress
-//     if (/*no turn has happened yet*/) {
-//         //change turn
-//         //turn = colors.green_O.toUpperCase();
-//         messageEl.innerText = 'It\'s your turn. Mark your square.';
-// } else if (winner === T) {//tie
+// if (winner === null) {  //game in progress
+//     turn = 1;
+//     messageEl.innerText = 'It\'s your turn. Mark your square.'; 
+    
+// }
+
+/*      CHANGE TURN         */
+function changeTurn(){
+    Math.abs(turn);
+    return turn;
+    console.log(turn);
+}
+
+/*   RENDER WHOSE TURN      */
+function renderTurn(){
+    if(turn = 1){
+        player = colors.x;
+    } else {
+        player = colors.o;
+    }
+}
+
+
+
+
+// if (winner !== null) { 
+    
+//         messageEl.innerText = 'It\'s your turn. Mark your square.';     //} 
+// else if (winner === T) {        //tie
 // messageEl.innerText = 'It\'s a tie!';
 // //add to totals
 // //onclick on any square, run init()
@@ -95,7 +117,15 @@ renderBoard();
 //     //add to totals
 //     //onclick any square, run init
 // }
+// return
 // }
+
+
+//4.2.2) Render a message:
+// 			4.2.2.1) If winner has a value other than null (game still in progress), render whose turn it is - use the color name for the player, converting it to upper case.
+// 			4.2.2.2) If winner is equal to 'T' (tie), render a tie message.
+// 			4.2.2.3) Otherwise, render a congratulatory message to which player has won - use the color name for the player, converting it to uppercase.
+// 	4.3) Wait for the user to click a square
 
 
 //start setup should include 1)blank board, 2)welcome message, 3)play button?
