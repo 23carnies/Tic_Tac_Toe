@@ -5,3 +5,19 @@
 
 let board, turn, winner;
 //winner = [//player that won, a tie, game in play]
+
+/*------Cached Element References------*/
+const messageEl = document.getElementById('message');
+const sq0El = document.getElementById('sq0');
+const sq1El = document.getElementById('sq1');
+const sq2El = document.getElementById('sq2');
+const sq3El = document.getElementById('sq3');
+const sq4El = document.getElementById('sq4');
+const sq5El = document.getElementById('sq5');
+const sq6El = document.getElementById('sq6');
+const sq7El = document.getElementById('sq7');
+const sq8El = document.getElementById('sq8');
+const resetEl = document.getElementById('reset');
+let boardEl = document.getElementsByClassName('board');
+//let boardEl = [sq0El, sq1El, sq2El, sq3El, sq4El, sq5El, sq6El, sq7El, sq8El];
+
