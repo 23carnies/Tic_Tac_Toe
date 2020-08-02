@@ -10,7 +10,9 @@ const winCombos = [[0,4,8], [6,4,2], [0,3,6], [1,4,7], [2,5,8], [0,1,2], [3,4,5]
 
 
 /*------Variables (state)------*/
-
+let board = [null, null, null, null, null, null, null, null, null];
+let turn = 1;   //playerX or playerO
+let winner = null; //player that won(1 or -1), a tie(T), or game in play(null)
 // Variables might include (board/turn/winner)
 //turn is to remember whose turn it is
 
@@ -40,8 +42,13 @@ let boardEl = document.getElementsByClassName('board');
 // for a mouse-click
 
 /*------Functions------*/
+init();
 
-
+function init(){
+    winner = false;
+    messageEl.innerText = 'Ready to play?!';
+    renderBoard();
+}
 // Some functions you might choose to use:
 
 // Initialization function:
@@ -65,16 +72,24 @@ let boardEl = document.getElementsByClassName('board');
 // either X or O depending on whose turn it is
 
 /*  RENDER THE BOARD  */
-
 function renderBoard() {
     for(let i=0;i<board.length;i++){
         boardEl = board.map(function(index, board){
             return board;
         });
         boardEl = colors.emptySpace;
-        console.log(boardEl); //i think i finally did it!
+        console.log(`What the what?? ${boardEl}`); //i think i finally did it!
     }
 }
+
+// function renderBoard() {
+//     board.forEach(boardEl => {
+//         boardEl = board.map(function(index, board){
+//             console.log(`What the what?? ${boardEl}`);
+//             return board;
+//     });
+// });
+// }
 
 
 
@@ -96,8 +111,6 @@ function renderTurn(){
 }
 
 /*     RENDER A MESSAGE     */
-
-
 function renderMessage(){
     if (winner !== null) { 
         renderTurn();
@@ -117,17 +130,12 @@ function renderMessage(){
     }
     console.log('I\'m working')
     return player;
-    }
-    renderMessage();
+    };
 
 
 
 
-//4.2.2) Render a message:
-// 			4.2.2.1) If winner has a value other than null (game still in progress), render whose turn it is - use the color name for the player, converting it to upper case.
-// 			4.2.2.2) If winner is equal to 'T' (tie), render a tie message.
-// 			4.2.2.3) Otherwise, render a congratulatory message to which player has won - use the color name for the player, converting it to uppercase.
-// 	4.3) Wait for the user to click a square
+
 
 
 //start setup should include 1)blank board, 2)welcome message, 3)play button?
@@ -171,8 +179,8 @@ function renderMessage(){
 // 				✅4.3.1.1.3) Set the background color of the current element by using the value as a key on the colors lookup object (constant).
 // 		4.2.2) Render a message:
 // 			4.2.2.1) If winner has a value other than null (game still in progress), render whose turn it is - use the color name for the player, converting it to upper case.
-// 			4.2.2.2) If winner is equal to 'T' (tie), render a tie message.
-// 			4.2.2.3) Otherwise, render a congratulatory message to which player has won - use the color name for the player, converting it to uppercase.
+// 			✅4.2.2.2) If winner is equal to 'T' (tie), render a tie message.
+// 			✅4.2.2.3) Otherwise, render a congratulatory message to which player has won - use the color name for the player, converting it to uppercase.
 // 	4.3) Wait for the user to click a square
 
 // 5) Handle a player clicking a square:
