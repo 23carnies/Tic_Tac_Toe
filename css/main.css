@@ -1,9 +1,19 @@
+* {
+    color: white;
+    font-family: 'Space Mono', monospace;
+}
+
 body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color:rgba(182, 182, 180, 0.796)
-    
+    background-color:rgba(182, 182, 180, 0.796);
+    background-image: url(../TicTacExtras/pexels-felix-mittermeier-956981.jpg);
+    background-position: center;
+    background-size: contain;
+    display: grid;
+    justify-content: center;
+    margin: 50px auto;
 }
 
 section.board {
@@ -18,20 +28,32 @@ article {
 }
 
 .innerBoard {
-    border: 3px solid black;
+    border: 3px solid white;
     font-size: 8vmin;
     text-align: center;
     vertical-align: middle;
 }
 
+h1{
+    font-size: 8vmin;
+    font-weight: 700;
+}
+h2{
+    font-size: 4vmin;
+}
 #reset {
-    margin-top: 25px;
+    margin-top: 15px;
+    color: navy;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 0 auto;
 }
 
-.playerX {
-    background-color: forestgreen;
+ .playerX {
+    
 }
 
 .playerO {
-    background-color: goldenrod;
+
 }
+

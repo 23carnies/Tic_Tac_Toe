@@ -5,20 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <script defer src="js/main.js"></script>
     <title>Tic Tac Toe</title>
 
 </head>
 <body>
-    <article>
+    
         <header>
             <h1>Tic-Tac-Toe</h1>
-            <h2 id="message">Message</h2>
+            <h2 id="message"></h2>
         </header>
-        
-        <section class="board">
+        <h3 id="gameStatus"></h3>
+        <!-- <input type="text" > -->
+
+        <section>
+            <input type="text" name="" id="Player_X" placeholder="X-Name">
+            <input type="text" name="" id="Player_O" placeholder="O-Name">
+        </section>
+        <section class="board" id="mainBoard">
             <div id="sq0" class="innerBoard"></div>
             <div id="sq1" class="innerBoard"></div>
             <div id="sq2" class="innerBoard"></div>
@@ -29,12 +35,12 @@
             <div id="sq7" class="innerBoard"></div>
             <div id="sq8" class="innerBoard"></div>
         </section>    
-        <div><button id="reset" class="btn btn-success">Play Again</button></div>
+        <section><button id="reset" class="btn btn-success">Play Again</button></section>
         
 
-        <!-- <div id="totals">
+        <!-- <section class="id="totals">
             Section for Player/Draw/Comp totals
-        </div> -->
-    </article>
+        </section> -->
+   
 </body>
 </html>
