@@ -3,11 +3,14 @@ const colors = {
     '1': 'X',
     '-1': 'O'
 }
+const winCombos = [[0,4,8], [6,4,2], [0,3,6], [1,4,7], [2,5,8], [0,1,2], [3,4,5], [6,7,8]];
+
 
 /*------Variables (state)------*/
 let board = [null, null, null, null, null, null, null, null, null];
 let turn = 1;  
 let winner = null;
+let turnCount;
 
 
 
@@ -16,11 +19,10 @@ let winner = null;
 const messageEl = document.getElementById('message');
 const resetEl = document.getElementById('reset');
 const gameStat = document.getElementById('gameStatus');
+const ticTac = document.getElementsByTagName('h1');
 
 /*------Event Listeners------*/
-resetEl.addEventListener('click', function(){
-    init();
-});
+resetEl.addEventListener('click', init);
 document.getElementById('mainBoard').addEventListener('click', handleClick);
 
 
@@ -30,10 +32,11 @@ document.getElementById('mainBoard').addEventListener('click', handleClick);
 init();
 
 function init(){
-    winner = false;
+    winner = null;
     turn = 1;
-    gameStat.textContent = `It's ${colors["1"]}'s turn.`
+    gameStat.textContent = `It's ${colors[turn]}'s turn.`
     messageEl.innerText = 'Ready to play?!';
+    ticTac.className = 'animate__tada';
 }
 
 /*--------HandleClick-------*/
@@ -59,30 +62,37 @@ function render(squareIndex) {
         } else {
             addLetter.textContent = 'O';
         }
+        messageEl.innerText = ' ';
+
     }    
      turn *= -1; 
+     turnCount++;
+     gameStat.textContent = `It's ${colors[turn]}'s turn.`
      isWinner();
+     
 }
 
 
 
 /*       IS THERE A WINNER?     */
-function isWinner() {
-    const winCombos = [[0,4,8], [6,4,2], [0,3,6], [1,4,7], [2,5,8], [0,1,2], [3,4,5], [6,7,8]];
+function isWinner(winCombos) {
     for(let i=0;i<winCombos.length;i++){
-        if(Math.abs((board[winCombos[i][0]] + board[winCombos[i][1]] + board[winCombos[i][2]] === 3))){
-            winner = turn;
-        } return winner;  
-        confetti.start(2000); 
-        messageEl.innerText = `${colors[turn]} is the winner!`
-        messageEl.className = 'animate__animated animate__bounce';
+        if(board[winCombos[i][0]] + board[winCombos[i][1]] + board[winCombos[i][2]] === 3) {
+            messageEl.innerText = `X is the winner!`;
+            confetti.start(2000);
+            messageEl.className = 'animate__animated animate__bounce';
+
+        } else if (board[winCombos[i][0]] + board[winCombos[i][1]] + board[winCombos[i][2]] === -3) {
+            messageEl.innerText = `O is the winner!`;
+            confetti.start(2000); 
+            messageEl.className = 'animate__animated animate__bounce';
+
+        } else if (turnCount === 10 && winner === false){
+            winner = 'T';
+            gameStatus.textContent = `It's a draw!`;
+        }  
         
     } 
-    if(board.includes(null) === false){
-        winner = 'T';
-        gameStatus.innerText = `It's a draw!`;
-    } 
-    
 }
 
 
