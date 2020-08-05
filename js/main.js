@@ -22,7 +22,6 @@ const gameStat = document.getElementById('gameStatus');
 const ticTac = document.getElementsByTagName('h1');
 
 /*------Event Listeners------*/
-resetEl.addEventListener('click', init);
 document.getElementById('mainBoard').addEventListener('click', handleClick);
 
 
@@ -51,40 +50,12 @@ function handleClick(evt){
     render(squareIndex);
 }
 
-
-/*      RENDER FUNCTION         */
-function render(squareIndex) {
-    if (winner === null) {
-        addLetter = document.getElementById(`sq${squareIndex}`);
-        board[squareIndex] = turn;
-        if (turn === 1) {
-            addLetter.textContent = 'X';
-        } else {
-            addLetter.textContent = 'O';
-        }
-        messageEl.innerText = ' ';
-
-    }    
-     turn *= -1; 
-     turnCount++;
-     gameStat.textContent = `It's ${colors[turn]}'s turn.`
-     isWinner();
-     
-}
-
-
-
-/*       IS THERE A WINNER?     */
 function isWinner(winCombos) {
     for(let i=0;i<winCombos.length;i++){
-        if(board[winCombos[i][0]] + board[winCombos[i][1]] + board[winCombos[i][2]] === 3) {
-            messageEl.innerText = `X is the winner!`;
+        if(Math.abs((board[winCombos[i][0]] + board[winCombos[i][1]] + board[winCombos[i][2]] === 3))) {
+            winner = turn
+            messageEl.innerText = `${colors[turn]} is the winner!`;
             confetti.start(2000);
-            messageEl.className = 'animate__animated animate__bounce';
-
-        } else if (board[winCombos[i][0]] + board[winCombos[i][1]] + board[winCombos[i][2]] === -3) {
-            messageEl.innerText = `O is the winner!`;
-            confetti.start(2000); 
             messageEl.className = 'animate__animated animate__bounce';
 
         } else if (turnCount === 10 && winner === false){
@@ -92,8 +63,35 @@ function isWinner(winCombos) {
             gameStatus.textContent = `It's a draw!`;
         }  
         
-    } 
+    } return winner;
 }
+
+
+/*      RENDER FUNCTION         */
+function render(squareIndex) {
+    messageEl.innerText = ' ';
+    if (winner === null) {
+        addLetter = document.getElementById(`sq${squareIndex}`);
+        board[squareIndex] = turn;
+        if (turn === 1) {
+            addLetter.textContent = 'X';
+            gameStat.textContent = `It's O's turn.`
+
+        } else {
+            addLetter.textContent = 'O';
+            gameStat.textContent = `It's X's turn.`
+
+        }
+        turnCount++;
+    }    
+     turn *= -1; 
+     isWinner();
+     
+}
+
+
+
+
 
 
 
