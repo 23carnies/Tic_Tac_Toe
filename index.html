@@ -8,7 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <script defer src="js/main.js"></script>
-    <title>Tic Tac Toe</title>
+    <script defer src="https://cdn.jsdelivr.net/gh/mathusummut/confetti.js/confetti.min.js"></script>
+    <title>Tic-Tac-Toe</title>
 
 </head>
 <body>
@@ -18,24 +19,25 @@
             <h2 id="message"></h2>
         </header>
         <h3 id="gameStatus"></h3>
-        <!-- <input type="text" > -->
 
         <!-- <section>
             <input type="text" name="" id="Player_X" placeholder="X-Name">
             <input type="text" name="" id="Player_O" placeholder="O-Name">
         </section> -->
+
+
         <section class="board" id="mainBoard">
-            <div id="sq0" class="innerBoard"></div>
-            <div id="sq1" class="innerBoard"></div>
-            <div id="sq2" class="innerBoard"></div>
-            <div id="sq3" class="innerBoard"></div>
-            <div id="sq4" class="innerBoard"></div>
-            <div id="sq5" class="innerBoard"></div>
-            <div id="sq6" class="innerBoard"></div>
-            <div id="sq7" class="innerBoard"></div>
-            <div id="sq8" class="innerBoard"></div>
+            <div id="sq0"></div>
+            <div id="sq1"></div>
+            <div id="sq2"></div>
+            <div id="sq3"></div>
+            <div id="sq4"></div>
+            <div id="sq5"></div>
+            <div id="sq6"></div>
+            <div id="sq7"></div>
+            <div id="sq8"></div>
         </section>    
-        <section><button id="reset" class="btn btn-success">Play Again</button></section>
+<section><button id="reset">Play Again</button></section>        
         
 
         <!-- <section class="id="totals">

@@ -10,24 +10,26 @@ body {
     background-color:rgba(182, 182, 180, 0.796);
     background-image: url(../TicTacExtras/pexels-felix-mittermeier-956981.jpg);
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     display: grid;
     justify-content: center;
-    margin: 50px auto;
+    /* margin: 0 auto; */
+    text-align: center;
 }
 
 section.board {
+    padding: 50px;
+    justify-content: center;
     display: grid;
     grid-template-rows: repeat(3, 10vmin);
     grid-template-columns: repeat(3, 10vmin);
     grid-gap: 0vmin;
     
-}
-article {
-    margin: 0 auto;
+    
 }
 
-.innerBoard {
+
+section > div {
     border: 3px solid white;
     font-size: 8vmin;
     text-align: center;
@@ -49,11 +51,5 @@ h2{
     margin: 0 auto;
 }
 
- .playerX {
-    
-}
 
-.playerO {
-
-}
 
