@@ -25,10 +25,6 @@ const ticTac = document.getElementsByTagName('h1');
 /*      EVENT LISTENERS     */
 
 document.getElementById('mainBoard').addEventListener('click', handleClick);
-resetEl.addEventListener('click', (e) => {
-    let audioPlay = new Audio('sounds/Comencng.wav');
-    audioPlay.play();
-})
 
 
 
@@ -62,14 +58,11 @@ function handleClick(evt){
 
 function isWinner() {
     for(let i=0;i<winCombos.length;i++){
-        if(Math.abs((board[winCombos[i][0]] + board[winCombos[i][1]] + board[winCombos[i][2]] === 3))) {
+        if(Math.abs(board[winCombos[i][0]] + board[winCombos[i][1]] + board[winCombos[i][2]]) === 3) {
             winner = turn;
             messageEl.textContent = `${colors[turn]} is the winner!`;
-            //messageEl.className = animate__flash;
             gameStat.textContent = '';
-            //yes.play();
             confetti.start(4000);
-
         } 
         } return winner;
 }
@@ -85,33 +78,18 @@ function render(squareIndex) {
         if (turn === 1) {
             gameStat.textContent = `It's O's turn.`;
             addLetter.textContent = 'X';
-            //boardSound.play();
             turnCount++; 
         } else {
             addLetter.textContent = 'O';
             gameStat.textContent = `It's X's turn.`;
-            //boardSound.play();
             turnCount++;
         } 
     } isWinner(); 
     if (winner === null && turnCount === 10){
         winner = "T"
         gameStat.textContent = `It's a draw!`;
-        perhaps.play(); 
      } 
     turn *= -1; 
     return;
 }
 
-/*---------PLAY SOUND---------*/
-document.body.addEventListener('click', (e) => {
-    let audioVar = new Audio(`sounds/b5KoshGood.wav`);
-    audioVar.play();
-})
-
-// const boardSound = new Audio('sounds/B5Door.wav')
-// const good = new Audio('sounds/b5KoshGood.wav');
-// const perhaps = new Audio('sounds/b5KoshPerhaps.wav');
-// const yes = new Audio('sounds/b5KoshYes.wav');
-// const commence = new Audio('/sounds/Comencng.wav');
-// const online = new Audio('sounds/Online.wav');

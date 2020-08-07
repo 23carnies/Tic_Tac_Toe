@@ -5,20 +5,15 @@
 
 body {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
     background-color:rgba(182, 182, 180, 0.796);
     background-image: url(../TicTacExtras/pexels-felix-mittermeier-956981.jpg);
     background-position: center;
     background-size: cover;
     display: grid;
-    justify-content: center;
-    /* margin: 0 auto; */
     text-align: center;
 }
 
 section.board {
-    padding: 50px;
     justify-content: center;
     display: grid;
     grid-template-rows: repeat(3, 10vmin);
@@ -60,6 +55,7 @@ h3{
     padding: 10px;
     margin: 0 auto;
 }
+
 
 
 
